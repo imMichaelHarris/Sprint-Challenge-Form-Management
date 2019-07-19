@@ -3,15 +3,16 @@ import { withFormik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
-const RegisterForm = () => {
+const RegisterForm = ({ message }) => {
   //   console.log(message);
-
+  console.log(message);
   return (
     <div>
       <Form className="form">
         <header>
           <h1>Register</h1>
         </header>
+        {message && <p>{message}</p>}
         <label>
           Username <Field name="username" placholder="Username" />
           <ErrorMessage component="span" name="username" />
@@ -47,13 +48,12 @@ export default withFormik({
   }),
 
   handleSubmit(values, submitProps) {
-    const { setToken } = submitProps.props;
-    console.log(submitProps);
+    const { setToken, setMessage } = submitProps.props;
     axios
       .post("http://localhost:5000/api/register", values)
       .then(res => {
-        const message = res.data;
         setToken(res.data.token);
+        setMessage(res.data.message);
         submitProps.resetForm();
         // submitProps.history.push("/recipes")
       })

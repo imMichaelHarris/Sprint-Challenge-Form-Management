@@ -8,13 +8,21 @@ import PrivateRoute from "./utility/PrivateRoute";
 
 function App() {
   const [token, setToken] = useLocalStorage("token");
+  const [message, setMessage] = useState();
 
   return (
     <div className="App">
       <Route
         exact
         path="/"
-        render={props => <RegisterForm {...props} setToken={setToken} />}
+        render={props => (
+          <RegisterForm
+            {...props}
+            setToken={setToken}
+            message={message}
+            setMessage={setMessage}
+          />
+        )}
       />
       <PrivateRoute path="/recipes" component={RecipeList} token={token} />
     </div>
