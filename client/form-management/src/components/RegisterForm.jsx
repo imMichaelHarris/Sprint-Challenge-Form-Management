@@ -1,20 +1,27 @@
-import React from 'react';
-import {withFormik, Form, Field} from 'formik'
+import React from "react";
+import { withFormik, Form, Field } from "formik";
 
 const RegisterForm = () => {
-    return (
-        <div>
-            <Form>
-                <label>Username <Field name="username" placholder="Username" /></label>
-            </Form>
-        </div>
-    );
+  return (
+    <div>
+      <Form>
+        <label>
+          Username <Field name="username" placholder="Username" />
+        </label>
+        <label>
+          Password{" "}
+          <Field name="password" placholder="password" type="password" />
+        </label>
+      </Form>
+    </div>
+  );
 };
 
 export default withFormik({
-    mapPropsToValues(){
-        return {
-            username: "test"
-        }
-    }
+  mapPropsToValues() {
+    return {
+      username: "",
+      password: ""
+    };
+  }
 })(RegisterForm);
