@@ -9,15 +9,52 @@
 
 .form {
   background: coral;
+  box-shadow: 0 10px 20px #000;
+  border-radius: 5px;
   height: 400px;
   display: flex;
+  padding: 20px;
   flex-direction: column;
   width: 450px;
-  margin: 0 auto;
+  margin: 40px auto;
+  justify-content: space-around;
+  transition: .3s ease-out;
+}
+.form:hover {
+  box-shadow: 0 10px 25px #000;
+}
+.form label {
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+.form input {
+  padding: 10px 15px;
+  width: 70%;
+  border-radius: 5px;
+  border: none;
+  transition: .1s ease-in;
+}
+.form header {
+  letter-spacing: 5px;
 }
 .form button {
   width: 100px;
   margin: 10px auto;
   padding: 8px 15px;
-
+  border-radius: 10px;
+  border: none;
+  background: blueviolet;
+  color: #fff;
+  transition: .1s ease-in-out;
+}
+.form button:hover {
+  cursor: pointer;
+  box-shadow: 0 0 5px #fff;
+}
+.form input:focus {
+  color: blueviolet;
+  letter-spacing: 2px;
+  outline: none;
+  border: 2px solid blueviolet
 }
