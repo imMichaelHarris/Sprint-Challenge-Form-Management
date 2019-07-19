@@ -2,13 +2,16 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import useLocalStorage from '../hooks/useLocalStorage'
+import useLocalStorage from "../hooks/useLocalStorage";
 
 const RegisterForm = ({ message }) => {
-  console.log(message);
+  //   console.log(message);
+
+  const [token, setToken] = useLocalStorage();
   return (
     <div>
       <Form>
+          <h1>Register</h1>
         <label>
           Username <Field name="username" placholder="Username" />
         </label>
@@ -39,14 +42,15 @@ export default withFormik({
       .required()
   }),
 
-  handleSubmit(values) {
+  handleSubmit(values, other) {
+    console.log(other);
     axios
       .post("http://localhost:5000/api/register", values)
       .then(res => {
         console.log("success", res);
         const message = res.data;
-        console.log(useLocalStorage(res.data.token))
+        // setToken()
       })
-      .catch(err => console.log(err.response));
+      .catch(err => console.log(err));
   }
 })(RegisterForm);
