@@ -8,7 +8,13 @@ import { axiosWithAuth } from "./utility/axiosWithAuth";
 function App() {
   const [token, setToken] = useLocalStorage("token");
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    axiosWithAuth.get("/restricted/data", {
+      headers: {
+        Authorization: token
+      }
+    });
+  }, []);
   return (
     <div className="App">
       <RegisterForm setToken={setToken} />
