@@ -19,6 +19,8 @@ const RegisterForm = ({errors}) => {
         <label>
           Password{" "}
           <Field name="password" placholder="password" type="password" />
+          <ErrorMessage name="password" />
+
         </label>
         <button>Register</button>
       </Form>
@@ -40,7 +42,8 @@ export default withFormik({
       .max(16, "Username cannot be more than 16 characters")
       .required(),
     password: Yup.string()
-      .min(6)
+      .min(6, "Password must be minimum 6 characters")
+      .max(20, "Password cannot be longer than 20 characters")
       .required()
   }),
 
