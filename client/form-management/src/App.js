@@ -16,10 +16,7 @@ function App() {
         path="/"
         render={props => <RegisterForm {...props} setToken={setToken} />}
       />
-      <Route
-        path="/recipes"
-        render={props => <RecipeList {...props} token={token} />}
-      />
+      <PrivateRoute path="/recipes" component={RecipeList} token={token} />
     </div>
   );
 }

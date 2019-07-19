@@ -49,7 +49,7 @@ export default withFormik({
         const message = res.data;
         setToken(res.data.token);
         submitProps.resetForm();
-        submitProps.history.push("/recipes")
+        // submitProps.history.push("/recipes")
       })
       .catch(err => console.log(err));
   }
