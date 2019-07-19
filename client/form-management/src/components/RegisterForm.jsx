@@ -12,13 +12,18 @@ const RegisterForm = ({ message }) => {
         </header>
         {message && <p>{message}</p>}
         <label>
-          Username <Field name="username" placholder="Username" />
+          <h5>Username</h5> <Field name="username" placholder="Username" />
           <ErrorMessage component="span" name="username" />
         </label>
         <label>
-          Password{" "}
+          <h5>Password</h5>
           <Field name="password" placholder="password" type="password" />
           <ErrorMessage component="span" name="password" />
+        </label>
+        <label>
+          <h5>Confirm Pass</h5>
+          <Field name="confirmPass" placholder="password" type="password" />
+          <ErrorMessage component="span" name="confirmPass" />
         </label>
         <button>Register</button>
       </Form>
@@ -30,7 +35,8 @@ export default withFormik({
   mapPropsToValues() {
     return {
       username: "",
-      password: ""
+      password: "",
+      confirmPass: ""
     };
   },
 
@@ -42,6 +48,10 @@ export default withFormik({
     password: Yup.string()
       .min(6, "Password must be minimum 6 characters")
       .max(20, "Password cannot be longer than 20 characters")
+      .required(),
+    confirmPass: Yup.string()
+      .min(6)
+      .max(20)
       .required()
   }),
 
@@ -53,8 +63,8 @@ export default withFormik({
         setToken(res.data.token);
         setMessage(res.data.message);
         submitProps.resetForm();
-        setTimeout(() => setMessage(), 5000)
-        // submitProps.history.push("/recipes")
+        setTimeout(() => setMessage(), 5000);
+        submitProps.props.history.push("/recipes");
       })
       .catch(err => console.log(err));
   }
