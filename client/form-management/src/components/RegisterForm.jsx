@@ -24,5 +24,10 @@ export default withFormik({
       username: "",
       password: ""
     };
-  }
+  },
+
+  validationSchema: Yup.object().shape({
+      username: Yup.string().min(6).required(),
+      password: Yup.string().min(6).required()
+  })
 })(RegisterForm);
