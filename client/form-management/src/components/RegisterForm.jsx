@@ -2,12 +2,10 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import useLocalStorage from "../hooks/useLocalStorage";
 
-const RegisterForm = ({ message }) => {
+const RegisterForm = ({ message, setToken, token }) => {
   //   console.log(message);
 
-  const [token, setToken] = useLocalStorage();
   return (
     <div>
       <Form>
