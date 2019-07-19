@@ -9,7 +9,7 @@ const RegisterForm = ({ message, setToken, token }) => {
   return (
     <div>
       <Form>
-          <h1>Register</h1>
+        <h1>Register</h1>
         <label>
           Username <Field name="username" placholder="Username" />
         </label>
@@ -41,15 +41,13 @@ export default withFormik({
   }),
 
   handleSubmit(values, submitProps) {
-      console.log(submitProps)
-      const {setToken} = submitProps.props
+    const { setToken } = submitProps.props;
     axios
       .post("http://localhost:5000/api/register", values)
       .then(res => {
-        console.log("success", res);
         const message = res.data;
-        setToken(res.data.token)
-        submitProps.resetForm()
+        setToken(res.data.token);
+        submitProps.resetForm();
       })
       .catch(err => console.log(err));
   }
