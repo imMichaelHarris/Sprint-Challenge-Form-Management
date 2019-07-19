@@ -4,9 +4,17 @@ import {withFormik, Form, Field} from 'formik'
 const RegisterForm = () => {
     return (
         <div>
-            form
+            <Form>
+                <label>Username <Field name="username" placholder="Username" /></label>
+            </Form>
         </div>
     );
 };
 
-export default RegisterForm;
+export default withFormik({
+    mapPropsToValues(){
+        return {
+            username: "test"
+        }
+    }
+})(RegisterForm);
