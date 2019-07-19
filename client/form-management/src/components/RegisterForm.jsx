@@ -3,7 +3,7 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
-const RegisterForm = ({ message, setToken, token }) => {
+const RegisterForm = ({}) => {
   //   console.log(message);
 
   return (
@@ -42,12 +42,14 @@ export default withFormik({
 
   handleSubmit(values, submitProps) {
     const { setToken } = submitProps.props;
+    console.log(submitProps)
     axios
       .post("http://localhost:5000/api/register", values)
       .then(res => {
         const message = res.data;
         setToken(res.data.token);
         submitProps.resetForm();
+        submitProps.history.push("/recipes")
       })
       .catch(err => console.log(err));
   }
