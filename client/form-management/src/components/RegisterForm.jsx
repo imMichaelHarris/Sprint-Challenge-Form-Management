@@ -4,7 +4,7 @@ import {withFormik, Form, Field} from 'formik'
 const RegisterForm = () => {
     return (
         <div>
-            
+            form
         </div>
     );
 };
