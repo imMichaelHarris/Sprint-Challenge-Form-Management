@@ -1,7 +1,7 @@
 import React from "react";
 import { withFormik, Form, Field } from "formik";
-import * as Yup from 'yup'
-import axios from 'axios'
+import * as Yup from "yup";
+import axios from "axios";
 
 const RegisterForm = () => {
   return (
@@ -14,6 +14,7 @@ const RegisterForm = () => {
           Password{" "}
           <Field name="password" placholder="password" type="password" />
         </label>
+        <button>Register</button>
       </Form>
     </div>
   );
@@ -28,7 +29,18 @@ export default withFormik({
   },
 
   validationSchema: Yup.object().shape({
-      username: Yup.string().min(6).required(),
-      password: Yup.string().min(6).required()
-  })
+    username: Yup.string()
+      .min(6)
+      .required(),
+    password: Yup.string()
+      .min(6)
+      .required()
+  }),
+
+  handleSubmit(values) {
+    axios
+      .post("http://localhost:6000/api/register", values)
+      .then(res => console.log("success", res))
+      .catch(err => console.log(err.response));
+  }
 })(RegisterForm);
