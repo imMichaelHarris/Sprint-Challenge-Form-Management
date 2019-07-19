@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../utility/axiosWithAuth";
+import Recipe from "../components/Recipe";
 
 const RecipeList = ({ token }) => {
   const [recipes, setRecipes] = useState();
