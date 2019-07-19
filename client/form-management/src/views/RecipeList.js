@@ -3,7 +3,7 @@ import { axiosWithAuth } from "../utility/axiosWithAuth";
 import Recipe from "../components/Recipe";
 
 const RecipeList = ({ token }) => {
-  const [recipes, setRecipes] = useState();
+  const [recipes, setRecipes] = useState([]);
   useEffect(() => {
     axiosWithAuth
       .get("/restricted/data", {
@@ -13,12 +13,20 @@ const RecipeList = ({ token }) => {
       })
       .then(res => {
         console.log(res);
+        setRecipes(res.data);
       })
       .catch(err => {
         console.log(err.response);
       });
   }, []);
-  return <div>List</div>;
+  console.log(recipes)
+  return (
+    <div>
+      {recipes.map((recipe, index) => (
+        <Recipe key={index} recipe={recipe} />
+      ))}
+    </div>
+  );
 };
 
 export default RecipeList;
