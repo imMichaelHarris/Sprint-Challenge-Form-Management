@@ -4,8 +4,6 @@ import * as Yup from "yup";
 import axios from "axios";
 
 const RegisterForm = ({ message }) => {
-  //   console.log(message);
-  console.log(message);
   return (
     <div>
       <Form className="form">
@@ -55,6 +53,7 @@ export default withFormik({
         setToken(res.data.token);
         setMessage(res.data.message);
         submitProps.resetForm();
+        setTimeout(() => setMessage(), 5000)
         // submitProps.history.push("/recipes")
       })
       .catch(err => console.log(err));
