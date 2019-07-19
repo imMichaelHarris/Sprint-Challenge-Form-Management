@@ -8,6 +8,7 @@ import { Route } from "react-router-dom";
 
 function App() {
   const [token, setToken] = useLocalStorage("token");
+  const [recipes, setRecipes] = useState();
 
   useEffect(() => {
     axiosWithAuth.get("/restricted/data", {
