@@ -2,6 +2,7 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import useLocalStorage from '../hooks/useLocalStorage'
 
 const RegisterForm = ({ message }) => {
   console.log(message);
@@ -44,7 +45,7 @@ export default withFormik({
       .then(res => {
         console.log("success", res);
         const message = res.data;
-        localStorage.setItem("token", res.data.token);
+        useLocalStorage(res.data.token)
       })
       .catch(err => console.log(err.response));
   }
