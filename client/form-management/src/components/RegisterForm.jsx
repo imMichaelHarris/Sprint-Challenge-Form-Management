@@ -40,14 +40,14 @@ export default withFormik({
       .required()
   }),
 
-  handleSubmit(values, other) {
-    console.log(other);
+  handleSubmit(values, submitProps) {
+      const {setToken} = submitProps.props
     axios
       .post("http://localhost:5000/api/register", values)
       .then(res => {
         console.log("success", res);
         const message = res.data;
-        // setToken()
+        setToken(res.data.token)
       })
       .catch(err => console.log(err));
   }

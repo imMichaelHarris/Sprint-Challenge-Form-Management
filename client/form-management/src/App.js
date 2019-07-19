@@ -4,7 +4,7 @@ import useLocalStorage from "./hooks/useLocalStorage";
 import RegisterForm from "./components/RegisterForm";
 
 function App() {
-  const [token, setToken] = useLocalStorage();
+  const [token, setToken] = useLocalStorage("token");
 
   return (
     <div className="App">
