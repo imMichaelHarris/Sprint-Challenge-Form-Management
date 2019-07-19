@@ -12,14 +12,12 @@ const RecipeList = ({ token }) => {
         }
       })
       .then(res => {
-        console.log(res);
         setRecipes(res.data);
       })
       .catch(err => {
         console.log(err.response);
       });
   }, []);
-  console.log(recipes)
   return (
     <div>
       {recipes.map((recipe, index) => (
