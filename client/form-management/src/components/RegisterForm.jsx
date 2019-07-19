@@ -45,7 +45,7 @@ export default withFormik({
       .then(res => {
         console.log("success", res);
         const message = res.data;
-        useLocalStorage(res.data.token)
+        console.log(useLocalStorage(res.data.token))
       })
       .catch(err => console.log(err.response));
   }
