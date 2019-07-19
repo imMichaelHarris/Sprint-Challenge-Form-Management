@@ -8,7 +8,7 @@ const RegisterForm = ({ message, setToken, token }) => {
 
   return (
     <div>
-      <Form>
+      <Form className="form">
         <h1>Register</h1>
         <label>
           Username <Field name="username" placholder="Username" />
