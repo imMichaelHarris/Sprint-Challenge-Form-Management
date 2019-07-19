@@ -3,7 +3,7 @@ import { withFormik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
-const RegisterForm = ({errors}) => {
+const RegisterForm = () => {
   //   console.log(message);
 
   return (
@@ -14,13 +14,12 @@ const RegisterForm = ({errors}) => {
         </header>
         <label>
           Username <Field name="username" placholder="Username" />
-          <ErrorMessage name="username" />
+          <ErrorMessage component="span" name="username" />
         </label>
         <label>
           Password{" "}
           <Field name="password" placholder="password" type="password" />
-          <ErrorMessage name="password" />
-
+          <ErrorMessage component="span" name="password" />
         </label>
         <button>Register</button>
       </Form>
