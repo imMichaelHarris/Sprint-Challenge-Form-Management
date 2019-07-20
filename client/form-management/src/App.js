@@ -5,7 +5,6 @@ import RegisterForm from "./components/RegisterForm";
 import RecipeList from "./views/RecipeList";
 import { Route } from "react-router-dom";
 import PrivateRoute from "./utility/PrivateRoute";
-import NavBar from "./components/NavBar";
 
 function App() {
   const [token, setToken] = useLocalStorage("token");
@@ -13,7 +12,6 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar />
       <Route
         exact
         path="/"
@@ -26,7 +24,12 @@ function App() {
           />
         )}
       />
-      <PrivateRoute path="/recipes" component={RecipeList} token={token} />
+      <PrivateRoute
+        path="/recipes"
+        component={RecipeList}
+        token={token}
+        setToken={setToken}
+      />
     </div>
   );
 }

@@ -1,10 +1,11 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom'
 
 const NavBar = (props) => {
     return (
-        <div>
-            
-        </div>
+        <header>
+            <NavLink to="/">Sign Out</NavLink>
+        </header>
     );
 };
 

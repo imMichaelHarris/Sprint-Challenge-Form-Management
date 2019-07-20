@@ -52,7 +52,6 @@ export default withFormik({
     confirmPass: Yup.string()
       .min(6)
       .max(20)
-      .required()
   }),
 
   handleSubmit(values, submitProps) {
